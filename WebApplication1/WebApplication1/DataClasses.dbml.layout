@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses">
+  <DataContextMoniker Name="/DataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f172857e-836a-423c-a65b-2b402e0bba27" absoluteBounds="0.75, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClassesDataContext/Tabla_Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c75ec603-efb2-44a6-995d-cc7e7d14c43a" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="75947f5b-949b-416c-84a8-a18cb5aea746" absoluteBounds="0.75, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataClassesDataContext/Tabla_CodigoTapa" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4422efec-2de2-42de-aba4-a8aef68859cc" absoluteBounds="0.765, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="045b0327-4870-415f-9cb3-cd71ce539167" absoluteBounds="3.5, 1.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DataClassesDataContext/Tabla_Sugerencias" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e35387dc-d5d7-4b4a-ab3f-a6c8df5e4e58" absoluteBounds="3.515, 1.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3d59e15f-09fd-46ec-af75-30955309b9ff" absoluteBounds="3.75, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/DataClassesDataContext/Tabla_TipoMusica" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da9db902-b454-4745-9b9c-c220179d8b00" absoluteBounds="3.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.94314697265625); (3.5 : 1.94314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesDataContext/Tabla_Usuario/Tabla_Usuario_Tabla_Sugerencias" />
+      <nodes>
+        <classShapeMoniker Id="f172857e-836a-423c-a65b-2b402e0bba27" />
+        <classShapeMoniker Id="045b0327-4870-415f-9cb3-cd71ce539167" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

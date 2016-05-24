@@ -1,0 +1,6 @@
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Licen\Desktop\quilmes\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

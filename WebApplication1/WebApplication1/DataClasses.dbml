@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Quilmes" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=GUSTAVOPC;Initial Catalog=Quilmes;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QuilmesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Tabla_Usuario" Member="Tabla_Usuario">
+    <Type Name="Tabla_Usuario">
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="latitudUsuario" Type="System.Decimal" DbType="Decimal(18,10)" CanBeNull="true" />
+      <Column Name="longitudUsuario" Type="System.Decimal" DbType="Decimal(18,10)" CanBeNull="true" />
+      <Column Name="ipAddress" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="loteCerveza" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="fechaToma" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Tabla_Usuario_Tabla_Sugerencias" Member="Tabla_Sugerencias" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Tabla_Sugerencias" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tabla_CodigoTapa" Member="Tabla_CodigoTapa">
+    <Type Name="Tabla_CodigoTapa">
+      <Column Name="id_CodigoTapa" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoTapa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ubicacionMusica" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="codigoUtilizado" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tabla_Sugerencias" Member="Tabla_Sugerencias">
+    <Type Name="Tabla_Sugerencias">
+      <Column Name="id_Mensaje" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="id_Usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mensajeSugerencia" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Tabla_Usuario_Tabla_Sugerencias" Member="Tabla_Usuario" ThisKey="id_Usuario" OtherKey="id_Usuario" Type="Tabla_Usuario" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tabla_TipoMusica" Member="Tabla_TipoMusica">
+    <Type Name="Tabla_TipoMusica">
+      <Column Name="id_TipoMusica" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TipoMusica" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.datosDelUsuario" Method="datosDelUsuario">
+    <Parameter Name="latitudUsuario" Type="System.Decimal" DbType="Decimal(18,10)" />
+    <Parameter Name="longitudUsuario" Type="System.Decimal" DbType="Decimal(18,10)" />
+    <Parameter Name="ipAddres" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="loteCerveza" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.LogueoUsuario" Method="LogueoUsuario">
+    <Parameter Name="codigoTapa" Type="System.Int32" DbType="Int" />
+    <Parameter Name="respuesta" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sugerenciaDelUsuario" Method="sugerenciaDelUsuario">
+    <Parameter Name="mensajeSugerencia" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="resultado" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
