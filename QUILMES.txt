@@ -1,0 +1,239 @@
+USE [master]
+GO
+/****** Object:  Database [Quilmes]    Script Date: 28/05/2016 4:28:12 ******/
+CREATE DATABASE [Quilmes]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Quilmes', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Quilmes.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'Quilmes_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Quilmes_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+ALTER DATABASE [Quilmes] SET COMPATIBILITY_LEVEL = 120
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Quilmes].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [Quilmes] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [Quilmes] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [Quilmes] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [Quilmes] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [Quilmes] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [Quilmes] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [Quilmes] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [Quilmes] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [Quilmes] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [Quilmes] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [Quilmes] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [Quilmes] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [Quilmes] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [Quilmes] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [Quilmes] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [Quilmes] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [Quilmes] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [Quilmes] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [Quilmes] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [Quilmes] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [Quilmes] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [Quilmes] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [Quilmes] SET RECOVERY FULL 
+GO
+ALTER DATABASE [Quilmes] SET  MULTI_USER 
+GO
+ALTER DATABASE [Quilmes] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [Quilmes] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [Quilmes] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [Quilmes] SET TARGET_RECOVERY_TIME = 0 SECONDS 
+GO
+ALTER DATABASE [Quilmes] SET DELAYED_DURABILITY = DISABLED 
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'Quilmes', N'ON'
+GO
+USE [Quilmes]
+GO
+/****** Object:  Table [dbo].[Tabla_CodigoTapa]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_CodigoTapa](
+	[id_CodigoTapa] [int] NOT NULL,
+	[codigoTapa] [int] NULL,
+	[ubicacionMusica] [nvarchar](50) NULL,
+	[codigoUtilizado] [bit] NULL,
+ CONSTRAINT [PK_Tabla_CodigoTapa] PRIMARY KEY CLUSTERED 
+(
+	[id_CodigoTapa] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Tabla_Sugerencias]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_Sugerencias](
+	[id_Mensaje] [int] NOT NULL,
+	[id_Usuario] [int] NULL,
+	[mensajeSugerencia] [nvarchar](max) NULL,
+ CONSTRAINT [PK_Tabla_Sugerencias] PRIMARY KEY CLUSTERED 
+(
+	[id_Mensaje] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Tabla_TipoMusica]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_TipoMusica](
+	[id_TipoMusica] [int] IDENTITY(1,1) NOT NULL,
+	[TipoMusica] [nvarchar](30) NOT NULL,
+ CONSTRAINT [PK_Tabla_TipoMusica] PRIMARY KEY CLUSTERED 
+(
+	[id_TipoMusica] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Tabla_Usuario]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tabla_Usuario](
+	[id_Usuario] [int] IDENTITY(1,1) NOT NULL,
+	[latitudUsuario] [decimal](18, 10) NULL,
+	[longitudUsuario] [decimal](18, 10) NULL,
+	[ipAddress] [nvarchar](30) NULL,
+	[loteCerveza] [nvarchar](50) NULL,
+	[fechaToma] [datetime] NULL,
+ CONSTRAINT [PK_Tabla_Usuario] PRIMARY KEY CLUSTERED 
+(
+	[id_Usuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+ALTER TABLE [dbo].[Tabla_Sugerencias]  WITH CHECK ADD  CONSTRAINT [FK_Tabla_Sugerencias_Tabla_Usuario] FOREIGN KEY([id_Usuario])
+REFERENCES [dbo].[Tabla_Usuario] ([id_Usuario])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Tabla_Sugerencias] CHECK CONSTRAINT [FK_Tabla_Sugerencias_Tabla_Usuario]
+GO
+/****** Object:  StoredProcedure [dbo].[datosDelUsuario]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[datosDelUsuario] (@latitudUsuario decimal(18,10), @longitudUsuario decimal(18,10), @ipAddres nvarchar(30), @loteCerveza nvarchar(50)) as
+
+Begin try
+
+	insert into Tabla_Usuario (latitudUsuario,longitudUsuario,ipAddress,loteCerveza,fechaToma) values (@latitudUsuario,@longitudUsuario,@ipAddres,@loteCerveza,getdate());
+
+end try
+
+begin catch
+
+	return -6
+
+end catch
+GO
+/****** Object:  StoredProcedure [dbo].[LogueoUsuario]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[LogueoUsuario] (@codigoTapa int, @respuesta int output) as
+Begin try
+
+	if exists (select id_CodigoTapa from Tabla_CodigoTapa where codigoTapa = @codigoTapa)
+
+	Begin
+
+		update Tabla_CodigoTapa set codigoUtilizado = 1 where codigoTapa = @codigoTapa
+
+		set @respuesta = 1
+
+		return @respuesta
+		
+	end
+
+	set @respuesta = -1
+
+	return @respuesta
+
+end try
+
+begin catch
+
+	return -6
+
+end catch
+GO
+/****** Object:  StoredProcedure [dbo].[sugerenciaDelUsuario]    Script Date: 28/05/2016 4:28:12 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[sugerenciaDelUsuario] (@mensajeSugerencia nvarchar(MAX), @resultado int output) as
+
+Begin try
+
+	Declare @id_Usuario int
+
+	select @id_Usuario = MAX(id_Usuario) from Tabla_Usuario
+	
+	if @id_Usuario is null
+	
+		begin
+		
+			set @id_Usuario = 1
+
+		end 
+
+	insert into Tabla_Sugerencias(id_Usuario,mensajeSugerencia) values (@id_Usuario,@mensajeSugerencia);
+
+end try
+
+begin catch
+
+	return -6
+
+end catch
+GO
+USE [master]
+GO
+ALTER DATABASE [Quilmes] SET  READ_WRITE 
+GO
